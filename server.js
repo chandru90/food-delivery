@@ -132,17 +132,18 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 app.use(
-    cors({
-      origin: "*", // Allow requests from any origin
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      allowedHeaders: ["Content-Type", "Authorization"],
-      credentials: true, // You can still keep this if you want to allow credentials (cookies, headers)
-    })
-  );app.use(express.json());
+  cors({
+    origin: "*", // Allow requests from any origin
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // You can still keep this if you want to allow credentials (cookies, headers)
+  })
+);
+app.use(express.json());
 
 // MongoDB connection
 mongoose
-  .connect("mongodb://localhost:27017/meal_delivery_system", {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
