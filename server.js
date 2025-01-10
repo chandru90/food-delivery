@@ -131,8 +131,14 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+app.use(
+    cors({
+      origin: "*", // Allow requests from any origin
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true, // You can still keep this if you want to allow credentials (cookies, headers)
+    })
+  );app.use(express.json());
 
 // MongoDB connection
 mongoose
