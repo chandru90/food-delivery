@@ -143,7 +143,7 @@ app.use(express.json());
 
 // MongoDB connection
 mongoose
-  .connect(MONGO_URI, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
